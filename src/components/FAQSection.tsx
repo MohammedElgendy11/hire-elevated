@@ -1,9 +1,11 @@
+import { useState } from "react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import BookDemoModal from "@/components/BookDemoModal";
 
 interface FAQItem {
   id: string;
@@ -55,7 +57,14 @@ const faqs: FAQItem[] = [
 ];
 
 const FAQSection = () => {
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+
   return (
+    <>
+      <BookDemoModal 
+        open={isDemoModalOpen} 
+        onOpenChange={setIsDemoModalOpen} 
+      />
     <section className="section-padding bg-gradient-to-b from-background to-secondary/20">
       <div className="container-max">
         <div className="text-center mb-16 fade-in-up">
@@ -98,7 +107,10 @@ const FAQSection = () => {
                 Our team is here to help you understand how RecuitPro AI can work for your organization.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="btn-hero">
+                <button 
+                  className="btn-hero"
+                  onClick={() => setIsDemoModalOpen(true)}
+                >
                   Schedule a Demo
                 </button>
                 <button className="btn-outline-premium">
@@ -110,6 +122,7 @@ const FAQSection = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle } from "lucide-react";
+import BookDemoModal from "@/components/BookDemoModal";
 
 const benefits = [
   "14-day free trial",
@@ -10,7 +12,14 @@ const benefits = [
 ];
 
 const CTASection = () => {
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+
   return (
+    <>
+      <BookDemoModal 
+        open={isDemoModalOpen} 
+        onOpenChange={setIsDemoModalOpen} 
+      />
     <section className="section-padding bg-gradient-to-br from-dark via-dark/95 to-primary/20 text-dark-foreground relative overflow-hidden">
       <div className="container-max relative z-10">
         <div className="text-center max-w-4xl mx-auto fade-in-up">
@@ -56,6 +65,7 @@ const CTASection = () => {
               variant="outline" 
               size="lg"
               className="border-2 border-primary-glow text-primary-glow px-12 py-6 text-xl font-semibold rounded-xl hover:bg-primary-glow hover:text-primary-foreground transition-all duration-300"
+              onClick={() => setIsDemoModalOpen(true)}
             >
               Schedule Demo
             </Button>
@@ -97,6 +107,7 @@ const CTASection = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

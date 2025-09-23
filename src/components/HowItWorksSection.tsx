@@ -128,7 +128,7 @@ const HowItWorksSection = () => {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center mt-16 fade-in-up">
+          <div className="text-center mt-16 fade-in-up">
           <div className="card-premium inline-block">
             <h3 className="text-xl font-semibold mb-2">Ready to transform your hiring?</h3>
             <p className="text-muted-foreground mb-6">Start your free trial today and experience the power of AI recruitment.</p>

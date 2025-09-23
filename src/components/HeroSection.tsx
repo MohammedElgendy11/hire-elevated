@@ -1,8 +1,17 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import BookDemoModal from "@/components/BookDemoModal";
 import heroImage from "@/assets/hero-image.jpg";
 
 const HeroSection = () => {
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+
   return (
+    <>
+      <BookDemoModal 
+        open={isDemoModalOpen} 
+        onOpenChange={setIsDemoModalOpen} 
+      />
     <section className="section-padding bg-gradient-to-br from-background via-accent/20 to-background relative overflow-hidden">
       <div className="container-max">
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[600px]">
@@ -24,7 +33,10 @@ const HeroSection = () => {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button className="btn-hero text-lg h-14 px-10">
+              <Button 
+                className="btn-hero text-lg h-14 px-10"
+                onClick={() => setIsDemoModalOpen(true)}
+              >
                 Request a Demo
               </Button>
               <Button 
@@ -83,6 +95,7 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--primary)_1px,_transparent_1px)] bg-[size:50px_50px]"></div>
       </div>
     </section>
+    </>
   );
 };
 
