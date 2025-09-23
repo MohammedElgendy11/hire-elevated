@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import BookDemoModal from "@/components/BookDemoModal";
+import FreeTrialModal from "@/components/FreeTrialModal";
 
 const benefits = [
   "14-day free trial",
@@ -13,12 +14,17 @@ const benefits = [
 
 const CTASection = () => {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+  const [isFreeTrialModalOpen, setIsFreeTrialModalOpen] = useState(false);
 
   return (
     <>
       <BookDemoModal 
         open={isDemoModalOpen} 
         onOpenChange={setIsDemoModalOpen} 
+      />
+      <FreeTrialModal 
+        open={isFreeTrialModalOpen} 
+        onOpenChange={setIsFreeTrialModalOpen} 
       />
     <section className="section-padding bg-gradient-to-br from-dark via-dark/95 to-primary/20 text-dark-foreground relative overflow-hidden">
       <div className="container-max relative z-10">
@@ -56,6 +62,7 @@ const CTASection = () => {
             <Button 
               size="lg" 
               className="bg-gradient-to-r from-primary-glow to-primary text-primary-foreground px-12 py-6 text-xl font-semibold rounded-xl shadow-glow hover:shadow-strong hover:scale-105 transition-all duration-300 group"
+              onClick={() => setIsFreeTrialModalOpen(true)}
             >
               Get Started Free
               <ArrowRight className="ml-2 w-6 h-6 group-hover:translate-x-1 transition-transform duration-200" />

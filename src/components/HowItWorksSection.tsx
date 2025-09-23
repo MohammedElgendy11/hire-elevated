@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { Upload, Search, CheckCircle } from "lucide-react";
+import FreeTrialModal from "@/components/FreeTrialModal";
 
 interface Step {
   id: number;
@@ -48,7 +50,14 @@ const steps: Step[] = [
 ];
 
 const HowItWorksSection = () => {
+  const [isFreeTrialModalOpen, setIsFreeTrialModalOpen] = useState(false);
+
   return (
+    <>
+      <FreeTrialModal 
+        open={isFreeTrialModalOpen} 
+        onOpenChange={setIsFreeTrialModalOpen} 
+      />
     <section className="section-padding bg-gradient-to-b from-background to-accent/10">
       <div className="container-max">
         <div className="text-center mb-16 fade-in-up">
@@ -128,17 +137,21 @@ const HowItWorksSection = () => {
         </div>
 
         {/* Call to Action */}
-          <div className="text-center mt-16 fade-in-up">
+        <div className="text-center mt-16 fade-in-up">
           <div className="card-premium inline-block">
             <h3 className="text-xl font-semibold mb-2">Ready to transform your hiring?</h3>
             <p className="text-muted-foreground mb-6">Start your free trial today and experience the power of AI recruitment.</p>
-            <button className="btn-hero">
+            <button 
+              className="btn-hero"
+              onClick={() => setIsFreeTrialModalOpen(true)}
+            >
               Start Free Trial
             </button>
           </div>
         </div>
       </div>
     </section>
+    </>
   );
 };
 
